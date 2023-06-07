@@ -5,6 +5,11 @@ C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\WEB API.deps.json
 C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\WEB API.runtimeconfig.json
 C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\WEB API.dll
 C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\WEB API.pdb
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\AutoMapper.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Humanizer.dll
 C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
@@ -66,3 +71,8 @@ C:\Users\murad\Downloads\WEB API\obj\Debug\net6.0\refint\WEB API.dll
 C:\Users\murad\Downloads\WEB API\obj\Debug\net6.0\WEB API.pdb
 C:\Users\murad\Downloads\WEB API\obj\Debug\net6.0\WEB API.genruntimeconfig.cache
 C:\Users\murad\Downloads\WEB API\obj\Debug\net6.0\ref\WEB API.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\murad\Downloads\WEB API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

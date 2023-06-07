@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 using WEB_API.DAL;
 using WEB_API.Entities;
-using WEB_API.Entities.Dtos.Cars;
+using WEB_API.Entities.Dtos.Colors;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace WEB_API.Controllers
@@ -13,53 +16,54 @@ namespace WEB_API.Controllers
     public class ColorsController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
 
-        public ColorsController(AppDbContext context)
+        public ColorsController(AppDbContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<ActionResult<GetColorDto>> GetById(int id)
         {
-            var color = _context.Colors.Find(id);
+            var color = await _context.Colors.FindAsync(id);
             if (color == null)
             {
                 return NotFound();
             }
+            GetColorDto colorDto = _mapper.Map<GetColorDto>(color);
 
-            return Ok(color);
+            return Ok(colorDto);
         }
         [HttpGet]
 
-        public async Task<IActionResult> GetAll()
+        public async Task<ActionResult<IEnumerable<GetColorDto>>> GetAll()
         {
             var result = await _context.Colors.ToListAsync();
             if (result.Count == 0) { return NotFound(); }
-            return Ok(result);
+            List<GetColorDto> colors = _mapper.Map<List<GetColorDto>>(result);
+            return Ok(colors);
         }
         [HttpPost]
-        public async Task<IActionResult> AddCars(CreateColorDto create)
+        public async Task<ActionResult> AddColors(CreateColorDto create)
         {
-            Color color = new Color
-            {
-                Name = create.Name,
-            };
+            Color color = _mapper.Map<Color>(create);
             await _context.Colors.AddAsync(color);
             await _context.SaveChangesAsync();
             return NoContent();
         }
         [HttpPut]
-        public async Task<IActionResult> Update( UpdateColorDto update)
+        public async Task<IActionResult> Update(int id, UpdateColorDto update)
         {
-            var result = await _context.Colors.FindAsync(update.Id);
-            if (result is null)
+            if (!ProductExists(id))
             {
                 return NotFound();
             }
-            result.Name = update.Name;
+            Color color = _mapper.Map<Color>(update);
+            _context.Colors.Update(color);
             await _context.SaveChangesAsync();
-            return NoContent();
+            return Ok(color);
 
         }
         [HttpDelete("{id}")]
@@ -72,9 +76,10 @@ namespace WEB_API.Controllers
             return Ok();
 
         }
-
-
-
+        private bool ProductExists(int id)
+        {
+            return (_context.Colors?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
 
     }
 }

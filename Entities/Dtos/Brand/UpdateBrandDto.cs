@@ -1,4 +1,4 @@
-﻿namespace WEB_API.Entities.Dtos.Cars
+﻿namespace WEB_API.Entities.Dtos.Brand
 {
     public class UpdateBrandDto
     {
